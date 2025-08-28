@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Main {
 
     // Task 1
@@ -14,15 +16,16 @@ public class Main {
 
     // Task 2
 
-    public static void printMobile(int clientDeviceYear, int clientOS) {
+    public static void printMobile(int clientOS) {
+        int currentYear = LocalDate.now().getYear();
 
-        if (clientOS == 1 && clientDeviceYear >= 2015) {
+        if (clientOS == 1 && currentYear >= 2015) {
             System.out.println(" Установите версию приложения для Android по ссылке ");
-        } else if (clientOS == 0 && clientDeviceYear >= 2015) {
+        } else if (clientOS == 0 && currentYear >= 2015) {
             System.out.println(" Установите версию приложения для iOS по ссылке");
-        } else if (clientOS == 1 && clientDeviceYear < 2015) {
+        } else if (clientOS == 1 && currentYear < 2015) {
             System.out.println(" Установите облегченную версию для Android ");
-        } else if (clientOS == 0 && clientDeviceYear < 2015) {
+        } else if (clientOS == 0 && currentYear < 2015) {
             System.out.println(" Установите облегченную версию для iOS ");
         }
 
@@ -66,7 +69,7 @@ public class Main {
 
         // Task 2
         System.out.println(" Task 2 ");
-        printMobile(2010, 0);
+        printMobile(0);
 
         // Task 3
         System.out.println(" Task 3 ");
