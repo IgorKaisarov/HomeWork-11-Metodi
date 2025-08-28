@@ -1,15 +1,80 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.time.LocalDate;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+public class Main {
+
+    // Task 1
+
+    public static void printYear(int year) {
+        if (year > 1584 && ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))) {
+            System.out.println(year + " год является високосным");
+        } else if (year > 1584) {
+            System.out.println(year + " год не является високосным");
+        } else {
+            System.out.println("Год не может быть меньше 1585");
         }
+    }
+
+    // Task 2
+
+    public static void printMobile(int yearOfDevice, int clientOS) {
+        int currentYear = LocalDate.now().getYear();
+
+
+        if (clientOS == 1 && yearOfDevice >= currentYear) {
+            System.out.println(" Установите версию приложения для Android по ссылке ");
+        } else if (clientOS == 0 && yearOfDevice >= currentYear) {
+            System.out.println(" Установите версию приложения для iOS по ссылке");
+        } else if (clientOS == 1 && yearOfDevice < currentYear) {
+            System.out.println(" Установите облегченную версию для Android ");
+        } else if (clientOS == 0 && yearOfDevice < currentYear) {
+            System.out.println(" Установите облегченную версию для iOS ");
+        }
+
+    }
+
+    // Task 3
+
+    public static int calculateDeliveryDays(int deliveryDistance) {
+
+        if (deliveryDistance > 100) {
+           return - 1;
+        } else if (deliveryDistance < 20) {
+            return 1;
+        } else if (deliveryDistance >= 20 && deliveryDistance <= 60) {
+            return 2;
+        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
+            return 3;
+        }
+        return 0;
+    }
+
+    public static void printCard(int deliveryDistance) {
+        int days = calculateDeliveryDays(deliveryDistance);
+        if (days == -1) {
+            System.out.println("Доставки нет");
+        } else {
+            System.out.println("Потребуется дней: " + days);
+        }
+
+    }
+
+
+
+
+    public static void main(String[] args) {
+
+        // Task 1
+        System.out.println(" Task 1 ");
+        int year = 2025;
+        printYear(year);
+
+        // Task 2
+        System.out.println(" Task 2 ");
+        printMobile(2015,0);
+
+        // Task 3
+        System.out.println(" Task 3 ");
+        printCard(25);
+
     }
 }
